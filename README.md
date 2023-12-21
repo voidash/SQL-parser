@@ -1,7 +1,21 @@
 <center>
-Parsing scripts, a coder's endeavor, Roday Parser dances, parsing's true treasure.
+<h1>रोडे | Roday | /rOhdAY/ | \[ˈɹoʊdeɪ\] </h1>
+<h3 style="font-style:italic">Parsing scripts, a coder's endeavor, Roday Parser dances, parsing's true treasure.</h3>
 </center>
-हामीले सपोर्ट गर्ने keyword लिस्ट : https://www.w3schools.com/sql/sql_ref_keywords.asp
+
+Roday is simple SQL Parser written in Rust and served on the Web with awesomeness of Webassembly.
+
+### Steps to Build
+
+```
+wasm-pack build --no-typescript --release --target web 
+
+python -m http.server 80 
+```
+
+## Demo is Live on [voidash.github.io/SQL-parser](https://voidash.github.io/SQL-parser)
+
+![](./assets/demo.png)
 
 ### If Anurag types
 
@@ -25,31 +39,21 @@ Then the scanner will have
 ]
 ```
 
-### Demo
+### Parsing Grammar
 
-```
-CREATE TABLE ComputerEngineering (
-    Batch varchar(255),
-    number_of_students int,
-);
-```
-![](./assets/example.png)
+> Aru garna alchi lagyo so leaving this checkbox, in case i want to add some features
 
-### Steps to Build
+-   ✅ Select
+-   ❌ CreateDatabase
+-   ❌ CreateTable
+-   ❌ InserInto
+-   ❌ DropTable
+-   ❌ DropDatabase
 
-```
-wasm-pack build --no-typescript --release --target web 
-
-python -m http.server 80 
-```
-
-### Grammar
-
-> Aru garna alchi lagyo
 
 EBNF of Select
 ```
-<select-statement> -> "SELECT" ["DISTINCT"] ["TOP" <u32>] ["(" <get-id-list> ")" | <get-id-list> ] "FROM" <get-id-list> [ <join-type> <identifier> "ON" <identifier> ] ;
+<select-statement> -> "SELECT" ["DISTINCT"] ["TOP" <u32>] ["(" <get-id-list> ")" | <get-id-list> ] "FROM" <get-id-list> [ <join-type> <identifier> "ON" <identifier> ] "WHERE"  "identifier" <operation> "identifier" ;
 
 <join-type> ->   "INNER JOIN" | "FULL OUTER JOIN" | "LEFT JOIN" | "RIGHT JOIN" 
 
@@ -57,6 +61,8 @@ EBNF of Select
 <get-id-list> -> <identifier>  {"," <identifier>} 
 
 <identifier> ->  '*' | <alpha> { <alphanumeric> | "_" | "-" }  
+
+<operation> -> "<>" | "=" | ">" | "<" 
 
 <alpha> ->  
     "a" | "b" | ... | "z" | "A" | "B" | ... | "Z"
@@ -66,4 +72,5 @@ EBNF of Select
 
 <digit> ::=
     "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+
 ```
