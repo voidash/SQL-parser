@@ -1,0 +1,12 @@
+{
+  "name": "rode_sql_parser",
+  "version": "0.1.0",
+  "files": [
+    "rode_sql_parser_bg.wasm",
+    "rode_sql_parser.js"
+  ],
+  "module": "rode_sql_parser.js",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
