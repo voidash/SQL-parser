@@ -1,0 +1,268 @@
+
+      @font-face {
+        font-family: rubik-doodle;
+        src: url('../rubik-doodle.ttf');
+      }
+
+      @font-face {
+        font-family: rubik;
+        src: url('../rubik-regular.ttf');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: rubik;
+        src: url('../rubik-extrabold.ttf');
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: rubik;
+        src: url('../rubik-italic.ttf');
+        font-weight: normal;
+        font-style: italic;
+      }
+
+      /* BASE STYLING */
+:root {
+  --col-bg: 10,10,10;
+  --col-fg-p: 99,102,241;
+  --col-fg-s: 184,171,143;
+  --col-text: 220,220,220;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  place-items: center;
+  background-color: rgb(var(--col-bg));
+  color: rgb(var(--col-text));
+  font-family: system-ui;
+}
+
+/* PEN CONTENT STYLING */
+
+.body-background {
+  isolation: isolate;
+  position: absolute;
+  filter: blur(10vh);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.circle {
+  width: 50vh;
+  height: 50vh;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+}
+
+.circle-1 {
+  background: purple;
+  animation: 6s move-circle-1 linear infinite;
+  top: 30%;
+  left: 50%;
+}
+
+.circle-2 {
+  background: darkblue;
+  animation: 5s move-circle-2 linear infinite;
+  left: 40%;
+  top: 40%;
+}
+
+.circle-3 {
+  width: 70vh;
+  height: 70vh;
+  background: indigo;
+  animation: 15s move-circle-3 linear infinite;
+  left: 30%;
+  top: 10%;
+}
+
+.circle-4 {
+  width: 100vh;
+  height: 100vh;
+  background: midnightblue;
+  animation: 8s move-circle-4 linear infinite;
+  left: 80%;
+  top: 50%;
+  filter: blur(15vh);
+}
+.circle-5 {
+  width: 70vh;
+  height: 70vh;
+  background: red;
+  animation: 8s move-circle-4 linear infinite;
+  left: 20%;
+  top: 60%;
+  filter: blur(15vh);
+}
+
+.content {
+  text-align: center;
+}
+
+
+.lex {
+  background: none;
+  color: white;
+  font-family: rubik-doodle;
+  font-size: 30px;
+  padding: 10px;
+  border: none;
+}
+.lex:hover {
+  cursor: pointer;
+  background-color: rgba(var(--col-bg),0.5);
+}
+
+.box{
+  margin-top: 100px;
+  position: relative;
+}
+
+.pane {
+  position: absolute;
+  padding: 0px 100px;
+  box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
+  max-width: 60vw;
+  min-height: 60vh; 
+  border-radius: 15px;
+  left: 50%;
+  transform: translate(-50%,0); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-top:1px solid rgba(255,255,255,0.2);
+  border-left:1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(5px);
+  background-color: rgba(var(--col-bg),0.4);
+  transition: height 2s,flex 2s;
+}
+
+
+@keyframes move-circle-1 {
+  0%{
+    transform:rotate(0deg)
+              translate(-15vh)
+              rotate(0deg);
+  }
+  100%{
+    transform:rotate(360deg)
+              translate(-15vh)
+              rotate(-360deg);
+  }
+}
+
+@keyframes move-circle-2 {
+  0%{
+    transform:rotate(0deg)
+              translate(-5vh)
+              rotate(0deg);
+  }
+  100%{
+    transform:rotate(-360deg)
+              translate(-5vh)
+              rotate(360deg);
+  }
+}
+
+
+@keyframes move-circle-3 {
+  0%{
+    transform:rotate(0deg)
+              translate(-5vh)
+              rotate(0deg);
+  }
+  100%{
+    transform:rotate(360deg)
+              translate(-5vh)
+              rotate(-360deg);
+  }
+}
+
+@keyframes move-circle-4 {
+  0%{
+    transform:rotate(0deg)
+              translate(-10vh)
+              rotate(0deg);
+  }
+  100%{
+    transform:rotate(-360deg)
+              translate(-10vh)
+              rotate(360deg);
+  }
+}
+
+      h1{
+        font-family: rubik-doodle;
+      }
+
+      table {
+        font-family: rubik, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      .query {
+        background: none;
+        color: white;
+        min-width: 300px;
+        border: none;
+        border-right: 1px solid white;
+        height: 80px;
+      }
+      .queryPortion {
+        position: relative;
+      }
+      .queryInput {
+        border: 1px solid white;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .parsed-value {
+        padding: 8px;
+      }
+
+      ul {
+        font-family: rubik;
+        font-style: italic;
+      }
+
+      h3 {
+        font-family: rubik;
+        font-weight: bold;
+      }
+      .grate {
+        border: 1px solid gray;
+        padding: 5px;
+        border-radius: 10px;
+      }
+
+      .group {
+        display: flex;
+        justify-content:space-around ;
+      }
+
+      .field {
+        font-family: rubik;
+        font-style: italic;
+        color: #3c085f;
+      }
+

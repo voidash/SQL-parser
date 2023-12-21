@@ -122,8 +122,8 @@ pub enum Token {
     OR,
 
     /* Delimiter */
-    ParentLeft,  // (
-    ParentRight, // )
+    ParenLeft,  // (
+    ParenRight, // )
     Comma,       // ,
     Semicolon,   // ;
 
@@ -253,8 +253,8 @@ lazy_static! {
 impl Symbol {
     pub fn match_delimiter(ch: char) -> Option<Symbol> {
         match ch {
-            '(' => Some(symbol("(", Token::ParentLeft, Group::Delimiter)),
-            ')' => Some(symbol(")", Token::ParentRight, Group::Delimiter)),
+            '(' => Some(symbol("(", Token::ParenLeft, Group::Delimiter)),
+            ')' => Some(symbol(")", Token::ParenRight, Group::Delimiter)),
             ',' => Some(symbol(",", Token::Comma, Group::Delimiter)),
             ';' => Some(symbol(";", Token::Semicolon, Group::Delimiter)),
             _ => None,
