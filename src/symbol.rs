@@ -1,8 +1,9 @@
 extern crate lazy_static;
 use std::collections::HashMap;
 use lazy_static::lazy_static;
+use serde::{Serialize,Deserialize};
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone,Serialize,Deserialize)]
 pub struct Symbol {
     pub name: String,
     pub len: usize,
@@ -10,7 +11,7 @@ pub struct Symbol {
     pub group: Group,
 }
 
-#[derive(Debug, PartialEq, Clone)]
+#[derive(Debug, PartialEq, Clone,Serialize,Deserialize)]
 pub enum Group {
     DataType,
     Function,
@@ -21,7 +22,7 @@ pub enum Group {
 }
 
 /// Token includes keywords, functions, and data types
-#[derive(Debug, PartialEq, Clone)]
+#[derive(Debug, PartialEq, Clone,Serialize,Deserialize)]
 pub enum Token {
     /* SQL Keywords */
     Add,

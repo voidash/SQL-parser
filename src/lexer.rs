@@ -2,21 +2,22 @@ use crate::symbol;
 use std::fmt;
 
 use log::*;
+use serde::{Serialize, Deserialize};
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Scanner {
     message: String,
     tokens: Vec<symbol::Symbol>,
     pos: Pos,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct Pos {
     cursor_l: usize,
     cursor_r: usize,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum LexerError {
     NotAllowedChar,
 }
@@ -25,7 +26,6 @@ impl fmt::Display for LexerError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match *self {
             LexerError::NotAllowedChar => write!(f, "please use ascii character."),
-            LexerError::QuoteError => write!(f, "please check the quotes"),
         }
     }
 }
@@ -41,6 +41,7 @@ impl Scanner {
             },
         }
     }
+
     pub fn scan_tokens(&mut self) -> Result<Vec<symbol::Symbol>, LexerError> {
         debug!("Starting scanning message:\n`{}`", self.message);
         let mut chars = self.message.chars();
@@ -223,8 +224,6 @@ mod tests {
         let message = "select beautiful_girls from Computer_engineering where sem = 1;";
         let mut s = Scanner::new(message);
         let tokens = s.scan_tokens().unwrap();
-        let mut iter = (&tokens).iter();
-        let x = iter.next().unwrap();
 
         println!("{:?}", tokens);
 

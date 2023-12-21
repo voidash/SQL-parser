@@ -22,4 +22,12 @@ Then the scanner will have
 ]
 ```
 
+### Supports Multiple Keywords
 
+```
+CREATE TABLE ComputerEngineering (
+    Batch varchar(255),
+    number_of_students int,
+);
+```
+![](./assets/example.png)

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>SQL Viewer</title>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      .query {
+        width: 500px;
+        height: 100px;
+      }
+      .queryPortion {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%,0);
+      }
+      .queryInput {
+        display: flex;
+      }
+</style>
+  </head>
+  <body>
+    <center><h1>Compiler Design Mini Project</h1></center>
+    <div class="queryPortion">
+      <div class="queryInput">
+        <textarea type="text" class="query"></textarea>
+        <button class="lex">Lex</button>
+      </div>
+
+      <div class="lexed-value"></div>
+    </div>
+
+
+    <script type="module" src="/js/index.js"></script>
+  </body>
+</html>
