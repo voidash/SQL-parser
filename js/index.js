@@ -6,8 +6,8 @@ let wasm = await init();
 
 document.querySelector(".lex").addEventListener("click", () => {
     let query = document.querySelector(".query").value;
+    let lexedQuery = lexer(query);
     try{
-        let lexedQuery = lexer(query);
         let parsedQuery = parser(query);
 
             console.log(lexedQuery);
