@@ -6,33 +6,39 @@ let wasm = await init();
 
 document.querySelector(".lex").addEventListener("click", () => {
     let query = document.querySelector(".query").value;
-    let lexedQuery = lexer(query);
+    try { 
+      let lexedQuery = lexer(query);
+      console.log(lexedQuery);
+
+      let lexedString = "";
+      lexedQuery.map((token) => {
+          lexedString += `<tr> 
+                              <td>${token.name}</td>
+                              <td>${token.group}</td>
+                              <td>${token.len}</td>
+                              <td>${token.token}</td>
+                          </tr>`;
+          });
+
+        document.querySelector('.lexed-value').innerHTML = `
+                                                  <table>
+                                                  <tr>
+                                                      <th>Name</th>
+                                                      <th>Group</th>
+                                                      <th>Length</th>
+                                                      <th>Token</th>
+                                                  </tr>
+                                                  ${lexedString}
+                                                  </table>`;
+
+    }catch {
+        console.log("idk");
+        document.querySelector('.lexed-value').innerHTML = 'Cannot Lex';
+    }
+
     try{
         let parsedQuery = parser(query);
-
-            console.log(lexedQuery);
             console.log(parsedQuery);
-
-            let lexedString = "";
-            lexedQuery.map((token) => {
-                lexedString += `<tr> 
-                                    <td>${token.name}</td>
-                                    <td>${token.group}</td>
-                                    <td>${token.len}</td>
-                                    <td>${token.token}</td>
-                                </tr>`;
-                });
-
-            document.querySelector('.lexed-value').innerHTML = `
-                                                        <table>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Group</th>
-                                                            <th>Length</th>
-                                                            <th>Token</th>
-                                                        </tr>
-                                                        ${lexedString}
-                                                        </table>`;
 
 
             let parsedHTMLBuilder = "";
@@ -105,10 +111,10 @@ document.querySelector(".lex").addEventListener("click", () => {
             }catch{
                 document.querySelector('.parsed-value').innerHTML = `
                 <center>
-                    <h3 class="grate">(Unparsable) मलाइ माफ गरीदेेउ, मेरा पार्सिन्ग फीचर काम गरेनछ भने</h3>
+                    <h3 class="grate">(Unparsable) Maybe Feature not Implemented</h3>
                 </center>
                 `;
-                document.querySelector('.lexed-value').innerHTML = '';
+                // document.querySelector('.lexed-value').innerHTML = '';
             }
 
 
